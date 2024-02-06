@@ -2,6 +2,13 @@ import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
+import appLanguage, { person, sayHello, sum } from './modules.js'
+
+
+console.log(person);
+sayHello();
+console.log(appLanguage);
+console.log(sum(5, 3));
 
 document.querySelector('#app').innerHTML = `
   <div>
