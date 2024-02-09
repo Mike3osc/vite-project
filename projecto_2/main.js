@@ -108,12 +108,18 @@ const getVendorList = document.querySelector(".filter");
 const vendorSelector = document.createElement("select");
 getVendorList.appendChild(vendorSelector);
 
+const uniqueVendor = [];
 
-for (let j = 0; j < products.length; j++) {
-  const vendors = products[j].seller;
+for (let k = 0; k < products.length; k++) {
+  const vendor = products[k].seller;
+  if (!uniqueVendor.includes(products[k].seller)) {
+    uniqueVendor.push(products[k].seller)
+  }
+}
+
+for (let j = 0; j < uniqueVendor.length; j++) {
+  const vendors = uniqueVendor[j];
   const vendorOptions = document.createElement("option")
   vendorOptions.innerHTML += (vendors)
   vendorSelector.appendChild(vendorOptions);
 }
-
-
