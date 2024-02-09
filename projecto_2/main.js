@@ -85,14 +85,13 @@ const products = [
 
 ];
 
-
 //Primero creo el template que quiero usar en mi pagina:
 const getProductTemplate = (product) => {
-  return `<h3 class="name">${product.name}</h3>
+  return `<div class="productBlock"><h3 class="name">${product.name}</h3>
   <img src="${product.image}" alt="ordenador portatil">
   <p class="stars">${product.stars} (${product.reviews} opiniones)</p>
   <p class="price">${product.price}€</p>
-  <p class="seller">Vendido por ${product.seller}</p>`
+  <p class="seller">Vendido por ${product.seller}</p></div>`
 }
 
 //Selecciono donde quiero meter el contenido. En este caso en la clase .products
@@ -102,6 +101,23 @@ for (let i = 0; i < products.length; i++) {
   const product = products[i];
   //añado el contenido de cada producto al template
   productList.innerHTML += getProductTemplate(product);
-
 }
 
+const sellerList = document.querySelector(".filter");
+
+const selector = document.createElement("select");
+const options = document.createElement("option");
+
+sellerList.appendChild(selector);
+selector.appendChild(options);
+
+const option = document.querySelectorAll("option");
+const uniqueSeller = [];
+
+for (let j = 0; j < products.length; j++) {
+  const seller = products[j].seller;
+  if (!uniqueSeller.includes(products[j].seller)) {
+    uniqueSeller.push(products[j].seller)
+  }
+}
+console.log(uniqueSeller);
