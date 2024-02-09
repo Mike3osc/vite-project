@@ -103,21 +103,17 @@ for (let i = 0; i < products.length; i++) {
   productList.innerHTML += getProductTemplate(product);
 }
 
-const sellerList = document.querySelector(".filter");
+const getVendorList = document.querySelector(".filter");
 
-const selector = document.createElement("select");
-const options = document.createElement("option");
+const vendorSelector = document.createElement("select");
+getVendorList.appendChild(vendorSelector);
 
-sellerList.appendChild(selector);
-selector.appendChild(options);
-
-const option = document.querySelectorAll("option");
-const uniqueSeller = [];
 
 for (let j = 0; j < products.length; j++) {
-  const seller = products[j].seller;
-  if (!uniqueSeller.includes(products[j].seller)) {
-    uniqueSeller.push(products[j].seller)
-  }
+  const vendors = products[j].seller;
+  const vendorOptions = document.createElement("option")
+  vendorOptions.innerHTML += (vendors)
+  vendorSelector.appendChild(vendorOptions);
 }
-console.log(uniqueSeller);
+
+
