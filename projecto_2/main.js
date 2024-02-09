@@ -7,7 +7,7 @@ const products = [
     price: 289,
     stars: 4,
     reviews: 250,
-    seller: 'PcComponentes',
+    seller: 'Bullastec',
     image: 'https://thumb.pccomponentes.com/w-300-300/articles/1005/10057282/1639-hp-essential-255-g8-amd-3020e-8gb-256gb-ssd-156.jpg'
   },
   {
@@ -23,7 +23,7 @@ const products = [
     price: 559,
     stars: 3,
     reviews: 510,
-    seller: 'PcComponentes',
+    seller: 'Idiomund',
     image: 'https://img.pccomponentes.com/articles/1042/10428540/1794-hp-15s-fq5085ns-intel-core-i5-1235u-16gb-512gb-ssd-156.jpg'
   },
   {
@@ -31,7 +31,7 @@ const products = [
     price: 729,
     stars: 5,
     reviews: 472,
-    seller: 'PcComponentes',
+    seller: 'Idiomund',
     image: 'https://img.pccomponentes.com/articles/1073/10733296/1176-hp-victus-15-fa0053ns-intel-core-i5-12450h-16gb-512gb-ssd-rtx-3050-156.jpg'
   },
   {
@@ -55,7 +55,7 @@ const products = [
     price: 999,
     stars: 3,
     reviews: 13,
-    seller: 'PcComponentes',
+    seller: 'DMI',
     image: 'https://img.pccomponentes.com/articles/1077/10771401/1552-asus-zenbook-14-oled-ux3402va-km209w-intel-evo-core-i7-1360p-16gb-512gb-ssd-14.jpg'
   },
   {
@@ -63,7 +63,7 @@ const products = [
     price: 379,
     stars: 2,
     reviews: 121,
-    seller: 'PcComponentes',
+    seller: 'Bullastec',
     image: 'https://img.pccomponentes.com/articles/1072/10726801/1477-asus-chromebook-cx1400fka-ec0116-intel-celeron-n4500-8gb-64gb-emmc-14.jpg'
   },
   {
@@ -71,7 +71,7 @@ const products = [
     price: 699,
     stars: 4,
     reviews: 215,
-    seller: 'PcComponentes',
+    seller: 'Bullastec',
     image: 'https://img.pccomponentes.com/articles/1080/10801806/1884-msi-bravo-15-c7ve-288xes-amd-ryzen-5-7535hs-16gb-512gb-ssd-rtx-3050-156.jpg'
   },
   {
@@ -84,4 +84,24 @@ const products = [
   },
 
 ];
+
+
+//Primero creo el template que quiero usar en mi pagina:
+const getProductTemplate = (product) => {
+  return `<h3 class="name">${product.name}</h3>
+  <img src="${product.image}" alt="ordenador portatil">
+  <p class="stars">${product.stars} (${product.reviews} opiniones)</p>
+  <p class="price">${product.price}€</p>
+  <p class="seller">Vendido por ${product.seller}</p>`
+}
+
+//Selecciono donde quiero meter el contenido. En este caso en la clase .products
+const productList = document.querySelector(".products");
+//con un bucle recorro el array y extraigo cada uno de los productos
+for (let i = 0; i < products.length; i++) {
+  const product = products[i];
+  //añado el contenido de cada producto al template
+  productList.innerHTML += getProductTemplate(product);
+
+}
 
