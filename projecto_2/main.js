@@ -1,5 +1,6 @@
 import './style.css'
 
+//El primer bloque es el codigo que pinta los productos en la aplicacion:
 
 const products = [
   {
@@ -103,6 +104,9 @@ for (let i = 0; i < products.length; i++) {
   productList.innerHTML += getProductTemplate(product);
 }
 
+//El segundo bloque pinta la seccion de filtros:
+
+//Primero el selector de vendors:
 const getVendorList = document.querySelector(".filter");
 
 const vendorSelector = document.createElement("select");
@@ -123,3 +127,22 @@ for (let j = 0; j < uniqueVendor.length; j++) {
   vendorOptions.innerHTML += (vendors)
   vendorSelector.appendChild(vendorOptions);
 }
+
+//Segundo el filtro por precio;
+
+const priceRangeFilter = document.createElement("input");
+getVendorList.appendChild(priceRangeFilter);
+priceRangeFilter.placeholder = "Insert your budget";
+
+const searchByPriceButton = document.createElement("button");
+getVendorList.appendChild(searchByPriceButton);
+searchByPriceButton.textContent = "Search";
+
+
+//Tercero el boton para limpiar todos los filtros
+
+const buttonToClean = document.createElement("button");
+getVendorList.appendChild(buttonToClean);
+
+buttonToClean.textContent = "Clean Filters";
+
