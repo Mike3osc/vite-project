@@ -10,6 +10,10 @@ body {
   gap:20px
 }
 
+.logo > img {
+  width: 75%;
+}
+
 .products {
   display: flex;
   flex-wrap: wrap;
@@ -38,3 +42,4 @@ transform: scale(1.1);
 .productBlock > img {
   width: 70%;
 }
+
