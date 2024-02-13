@@ -1,6 +1,6 @@
 body {
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 20% 80%;
 }
 
 .filter {
@@ -15,6 +15,7 @@ body {
   flex-wrap: wrap;
   gap:50px;
   align-items: center;
+  margin-left: 20px;
 }
 
 .productBlock {
@@ -26,6 +27,12 @@ body {
   padding: 10px;
   width: 250px;
   height: 450px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+.productBlock:hover {
+background-color: rgb(241, 239, 235);
+transform: scale(1.1);
 }
 
 .productBlock > img {
