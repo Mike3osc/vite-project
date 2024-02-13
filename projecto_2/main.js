@@ -98,11 +98,27 @@ const getProductTemplate = (product) => {
 //Selecciono donde quiero meter el contenido. En este caso en la clase .products
 const productList = document.querySelector(".products");
 //con un bucle recorro el array y extraigo cada uno de los productos
-for (let i = 0; i < products.length; i++) {
-  const product = products[i];
-  //añado el contenido de cada producto al template
-  productList.innerHTML += getProductTemplate(product);
+
+
+//Voy a crear dos funciones para usar mas adelante:
+//Una que pinte los productos
+//La otra que limpie los productos
+
+function printProducts(items, list) {
+
+  for (let i = 0; i < items.length; i++) {
+    const product = items[i];
+    //añado el contenido de cada producto al template
+    list.innerHTML += getProductTemplate(product);
+  }
 }
+
+printProducts(products, productList);
+
+function clearList(list) {
+  list.innerHTML = "";
+}
+
 
 //El segundo bloque pinta la seccion de filtros:
 
@@ -110,6 +126,7 @@ for (let i = 0; i < products.length; i++) {
 const getVendorList = document.querySelector(".filter");
 
 const vendorSelector = document.createElement("select");
+vendorSelector.classList.add("vendors");
 getVendorList.appendChild(vendorSelector);
 
 const uniqueVendor = [];
@@ -128,9 +145,20 @@ for (let j = 0; j < uniqueVendor.length; j++) {
   vendorSelector.appendChild(vendorOptions);
 }
 
+//añado la funcionalidad de seleccion de vendor 
+
+vendorSelector.addEventListener("change", (event) => {
+  const selectedVendor = vendorSelector.value;
+  const result = products.filter((product) => product.seller === selectedVendor);
+  clearList(productList);
+  printProducts(result, productList);
+});
+
+
 //Segundo el filtro por precio;
 
 const priceRangeFilter = document.createElement("input");
+priceRangeFilter.setAttribute("type", "number");
 getVendorList.appendChild(priceRangeFilter);
 priceRangeFilter.placeholder = "Insert your budget";
 
@@ -138,11 +166,20 @@ const searchByPriceButton = document.createElement("button");
 getVendorList.appendChild(searchByPriceButton);
 searchByPriceButton.textContent = "Search";
 
+searchByPriceButton.addEventListener("click", (event) => {
+  const budgetFiltered = priceRangeFilter.value;
+  const resultByPrice = products.filter((product) => budgetFiltered >= product.price);
+  clearList(productList);
+  printProducts(resultByPrice, productList);
+})
 
-//Tercero el boton para limpiar todos los filtros
+//Tercero el boton para limpiar todos los filtros y sun funcionalidad
 
 const buttonToClean = document.createElement("button");
 getVendorList.appendChild(buttonToClean);
-
 buttonToClean.textContent = "Clean Filters";
-
+buttonToClean.addEventListener("click", (cleanFilter) => {
+  priceRangeFilter.value = "";
+  clearList(productList)
+  printProducts(products, productList);
+});

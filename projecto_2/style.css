@@ -1,3 +1,15 @@
+body {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  margin-top: 65px;
+  gap:20px
+}
+
 .products {
   display: flex;
   flex-wrap: wrap;
