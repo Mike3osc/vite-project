@@ -114,9 +114,6 @@ transform: scale(1.1);
   justify-content: center;
 }
 
-.productBlock {
-  margin-top: 50px;
-}
 }
 
 @media screen and (max-width: 650px) {
