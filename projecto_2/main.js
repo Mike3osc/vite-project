@@ -60,7 +60,7 @@ const products = [
     image: 'https://img.pccomponentes.com/articles/1077/10771401/1552-asus-zenbook-14-oled-ux3402va-km209w-intel-evo-core-i7-1360p-16gb-512gb-ssd-14.jpg'
   },
   {
-    name: 'ASUS Chromebook CX1400FKA-EC0116 Inte',
+    name: 'ASUS Chromebook CX1400FKA-EC0116 Intel',
     price: 379,
     stars: 2,
     reviews: 121,
@@ -144,21 +144,14 @@ const createProductTemplate = (products) => {
 }
 
 createProductTemplate(products);
-/*
+
 //Voy a crear dos funciones para usar mas adelante:
 //Una que pinte los productos
 //La otra que limpie los productos
 
-function printProducts(items, list) {
-
-  for (let i = 0; i < items.length; i++) {
-    const product = items[i];
-    //añado el contenido de cada producto al template
-    list.innerHTML += getProductTemplate(product);
-  }
+function createList(list) {
+  list.innerHTML = createProductTemplate(products);
 }
-
-printProducts(products, productList);
 
 function clearList(list) {
   list.innerHTML = "";
@@ -195,8 +188,7 @@ for (let j = 0; j < uniqueVendor.length; j++) {
 vendorSelector.addEventListener("change", (event) => {
   const selectedVendor = vendorSelector.value;
   const result = products.filter((product) => product.seller === selectedVendor);
-  clearList(productList);
-  printProducts(result, productList);
+  clearList(products);
 });
 
 
@@ -214,8 +206,7 @@ searchByPriceButton.textContent = "Search";
 searchByPriceButton.addEventListener("click", (event) => {
   const budgetFiltered = priceRangeFilter.value;
   const resultByPrice = products.filter((product) => budgetFiltered >= product.price);
-  clearList(productList);
-  printProducts(resultByPrice, productList);
+  clearList(products);
 })
 
 //Tercero el boton para limpiar todos los filtros y sun funcionalidad
@@ -225,9 +216,8 @@ getVendorList.appendChild(buttonToClean);
 buttonToClean.textContent = "Clean Filters";
 buttonToClean.addEventListener("click", (cleanFilter) => {
   priceRangeFilter.value = "";
-  clearList(productList)
-  printProducts(products, productList);
+  clearList(products)
 });
 
 
-*/
+
