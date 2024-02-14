@@ -150,13 +150,8 @@ createProductTemplate(products);
 //La otra que limpie los productos
 
 function createList(list) {
-  list.innerHTML = createProductTemplate(products);
+  createProductTemplate(list);
 }
-
-function clearList(list) {
-  list.innerHTML = "";
-}
-
 
 //El segundo bloque pinta la seccion de filtros:
 
@@ -188,7 +183,7 @@ for (let j = 0; j < uniqueVendor.length; j++) {
 vendorSelector.addEventListener("change", (event) => {
   const selectedVendor = vendorSelector.value;
   const result = products.filter((product) => product.seller === selectedVendor);
-  clearList(products);
+  createList(result);
 });
 
 
@@ -206,7 +201,7 @@ searchByPriceButton.textContent = "Search";
 searchByPriceButton.addEventListener("click", (event) => {
   const budgetFiltered = priceRangeFilter.value;
   const resultByPrice = products.filter((product) => budgetFiltered >= product.price);
-  clearList(products);
+  createList(resultByPrice);
 })
 
 //Tercero el boton para limpiar todos los filtros y sun funcionalidad
@@ -216,7 +211,7 @@ getVendorList.appendChild(buttonToClean);
 buttonToClean.textContent = "Clean Filters";
 buttonToClean.addEventListener("click", (cleanFilter) => {
   priceRangeFilter.value = "";
-  clearList(products)
+  createList(products);
 });
 
 
