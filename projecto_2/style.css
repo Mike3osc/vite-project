@@ -4,7 +4,7 @@
 
 body {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 25% 75%;
 }
 
 h3 {
@@ -23,6 +23,7 @@ p {
 .filter {
   display: flex;
   flex-direction: column;
+  margin-left: 20px;
   margin-top: 65px;
   gap:20px
 }

@@ -103,16 +103,11 @@ const createProductTemplate = (products) => {
     const divPrice = document.createElement("p");
     const divSeller = document.createElement("p")
 
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= product.stars; i++) {
       const star = document.createElement("img");
       star.className = "star";
-
-      if (i <= product.stars) {
-        star.src = "./assets/star_rating.png";
-      }
-
+      star.src = "./assets/star_rating.png";
       divStars.appendChild(star);
-
     }
 
     divH3.textContent = product.name;
