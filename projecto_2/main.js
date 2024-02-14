@@ -6,7 +6,7 @@ const products = [
   {
     name: 'HP Essentials 255 G8 AMD',
     price: 289,
-    stars: 4,
+    stars: 3,
     reviews: 250,
     seller: 'Bullastec',
     image: 'https://thumb.pccomponentes.com/w-300-300/articles/1005/10057282/1639-hp-essential-255-g8-amd-3020e-8gb-256gb-ssd-156.jpg'
@@ -87,19 +87,64 @@ const products = [
 ];
 
 //Primero creo el template que quiero usar en mi pagina:
-const getProductTemplate = (product) => {
-  return `<div class="productBlock"><h3 class="name">${product.name}</h3>
-  <img src="${product.image}" alt="ordenador portatil">
-  <p class="stars">${product.stars} (${product.reviews} opiniones)</p>
-  <p class="price">${product.price}€</p>
-  <p class="seller">Vendido por ${product.seller}</p></div>`
+
+const createProductTemplate = (products) => {
+  const divProducts = document.querySelector(".products");
+  divProducts.innerHTML = "";
+
+  for (const product of products) {
+    const divProduct = document.createElement("div")
+    const divH3 = document.createElement("h3");
+    const divProductImg = document.createElement("div");
+    const productImg = document.createElement("img")
+    const divStarsReview = document.createElement("div");
+    const divStars = document.createElement("div")
+    const divReviews = document.createElement("p");
+    const divPrice = document.createElement("p");
+    const divSeller = document.createElement("p")
+
+    for (let i = 1; i <= 5; i++) {
+      const star = document.createElement("img");
+      star.className = "star";
+
+      if (i <= product.stars) {
+        star.src = "./assets/star_rating.png";
+      }
+
+      divStars.appendChild(star);
+
+    }
+
+    divH3.textContent = product.name;
+    productImg.src = product.image;
+    divReviews.textContent = "Opiniones (" + product.reviews + ")";
+    divPrice.textContent = "Precio: " + product.price + "";
+    divSeller.textContent = "Vendido por: " + product.seller + "";
+
+    divProduct.className = "product";
+    divH3.className = "name";
+    divProductImg.className = "imageDiv";
+    productImg.className = "productImg";
+    divStarsReview.className = "starsReviews";
+    divStars.className = "stars";
+    divReviews.className = "reviews";
+    divPrice.className = "price";
+    divSeller.className = "seller";
+
+    divProduct.appendChild(divH3);
+    divProduct.appendChild(divProductImg);
+    divProductImg.appendChild(productImg);
+    divProduct.appendChild(divStarsReview);
+    divStarsReview.appendChild(divStars);
+    divStarsReview.appendChild(divReviews);
+    divProduct.appendChild(divPrice);
+    divProduct.appendChild(divSeller);
+    divProducts.appendChild(divProduct);
+  }
 }
 
-//Selecciono donde quiero meter el contenido. En este caso en la clase .products
-const productList = document.querySelector(".products");
-//con un bucle recorro el array y extraigo cada uno de los productos
-
-
+createProductTemplate(products);
+/*
 //Voy a crear dos funciones para usar mas adelante:
 //Una que pinte los productos
 //La otra que limpie los productos
@@ -183,3 +228,6 @@ buttonToClean.addEventListener("click", (cleanFilter) => {
   clearList(productList)
   printProducts(products, productList);
 });
+
+
+*/
